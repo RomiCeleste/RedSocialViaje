@@ -1,0 +1,27 @@
+body{
+
+  background-image: url(../img/fondo.jpg);
+  background-size: cover;
+  opacity: 0,2;
+  margin-left: 20px;
+}
+div.container{
+  font-family: "Slabo";
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+legend{
+  font-family: "Titan One";
+  font-size: 45px;
+  text-align: center;
+}
+div.send{
+  font-size: 25px;
+  text-align: right;
+  text-decoration: inherit;
+}
+fieldset{
+  border: 0px;
+}

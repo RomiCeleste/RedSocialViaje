@@ -1,0 +1,103 @@
+/* +++++++++++++++++ */
+/* Resets Generales */
+/* +++++++++++++++++ */
+
+* {
+    box-sizing: border-box;
+}
+ul {
+  padding: 0;
+  background-color: gray;
+  font-family: "Slabo";
+  font-size: 20px;
+  color: white;
+}
+li {
+    list-style: none;
+}
+
+body {
+  background-color: #9FE5E5;
+  font: sans-serif;
+}
+
+/* ++++++++++++++++ */
+/* Pagina principal*/
+/* ++++++++++++++++ */
+
+.container {
+  /*Flex*/
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: row;
+}
+.left {
+  /*Flex*/
+  flex-basis: 70%;
+}
+.right {
+  /*Flex*/
+  flex-basis: 30%;
+  background-image: url(../img/fondo.jpg);
+  background-size: cover;
+  height: inherit;
+  border-left:4px solid #fff;
+  margin-left: 13px;
+}
+
+.header-class,
+.nav ul {
+  /*Flex*/
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.nav ul:visited{
+  color: white;
+}
+
+.nav ul {
+  justify-content: space-around;
+}
+.header-class{
+  background-color: #660675;
+}
+h1{
+  font-family: "Slabo";
+  font-size: 70px;
+  color: white;
+  margin-left: 30px;
+
+}
+h2{
+  font-family: "Titan One";
+  font-size: 40px;
+  text-align: center;
+}
+p{
+  text-align: center;
+  font-family:"Slabo";
+  font-size: 20px;
+  color: grey;
+  margin: 70px;
+}
+.conectate{
+  font-family:"Slabo";
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  background-color: #660675;
+}
+form{
+  font-family: "Slabo";
+  font-size: 20px;
+  text-align: center;
+}
+
+
+div.registrarse{
+  background-color: #660675;
+  text-align: center;
+  color; white;
+  font-size: 30px;
+}

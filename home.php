@@ -14,16 +14,9 @@
       <section class="left">
         <header>
           <div class="header-class">
-            <h1><img src="img/avion1-50.jpg">    Group Trip</h1>
+            <h1><img src="img/avion1-50.jpg"><a href="home.php">Group Trip</a></h1>
           </div>
-          <nav class="nav">
-            <ul>
-              <li>Quienes Somos</li>
-              <li>Proximos Viajes</li>
-              <li>Contacto</li>
-              <li><a href="faq.php" class="btn"> F.A.Q.</li></a>
-            </ul>
-          </nav>
+          <?php require_once('nav.php'); ?>
         </header>
         <main>
           <section class="content">

@@ -14,8 +14,8 @@
 
     <div id='fg_membersite'>
         <form id='register' action='' method='get'>
-            <fieldset >
-                <legend>Registrate</legend>
+            <div>
+                <h1>Registrate</h1>
 
                 <div><span class='error'></span></div>
                 <div class='container'>
@@ -52,7 +52,9 @@
                     <input type='submit' name='Submit' value='Enviar' />
                 </div>
 
-            </fieldset>
+                <a href="home.php" class="btn">VOLVER</a>
+
+            </div>
         </form>
 
     </body>

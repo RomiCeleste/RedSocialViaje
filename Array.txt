@@ -1,0 +1,152 @@
+   Array
+(
+    [usuarios] => Array
+        (
+            [0] => Array
+                (
+                    [nombre_completo] => usuario 0
+                    [email] => usuario0@0.com
+                    [usuario] => cero
+                    [password] => $2y$10$QNtluC96qxSJRx7nzMO98OCIlx1BbTw4Si/VPBV9NKqLyfkJexWRy
+                    [avatar] => img/avatar1.png
+                )
+
+            [1] => Array
+                (
+                    [nombre_completo] => usuario 1
+                    [email] => usuario1@1.com
+                    [usuario] => uno
+                    [password] => $2y$10$RMu2utDfRV8vCdzkSQHvEOMSDf047Qkam9vvL/5Uc9/D6BX9/Gufa
+                    [avatar] => img/avatar1.png
+                )
+
+            [2] => Array
+                (
+                    [nombre_completo] => usuario 3
+                    [email] => usuario3@usuario3.com
+                    [usuario] => tres
+                    [password] => $2y$10$R4I6igNQAFtxHusH20o5uu8jvyGRS2lgwAeGbxg08u4fmY0sH.MrW
+                    [avatar] => img/avatar1.png
+                )
+
+            [3] => Array
+                (
+                    [nombre_completo] => usuario 4
+                    [email] => cuatro@4.com
+                    [usuario] => cuatro
+                    [password] => $2y$10$YFbh3BjTXMJkS41bIVC08uxgIxhCxwRitAP7AyTKaIku0W0WNEBfK
+                    [avatar] => img/5b1d8a1ae8f6a.png
+                )
+
+            [4] => Array
+                (
+                    [nombre_completo] => uusario 5
+                    [email] => cinco@5.com
+                    [usuario] => cinco
+                    [password] => $2y$10$RN5lsPItHZOZERQtC2dPDeexDUS1/.v2wO0VJsTXRTITBrycOc4zi
+                    [avatar] => img/5b1d8a7fa7fb8.png
+                )
+
+            [5] => Array
+                (
+                    [nombre_completo] => usuario 6
+                    [email] => seis@6.com
+                    [usuario] => seis
+                    [password] => $2y$10$fuUTJU5lC6/zoKV1OWE7jeuH/lma/aZnx.Wkdn/Rgui9dY0xSqvOi
+                    [avatar] => img/avatar1.png
+                )
+
+            [6] => Array
+                (
+                    [nombre_completo] => usuario siete
+                    [email] => siete@7.com
+                    [usuario] => siete
+                    [password] => $2y$10$2E4AuoPri0krjNpluU1Yl.OOG4yfYeBeKjuxMZ.6aNCLLJsoTKq0K
+                    [avatar] => img/5b1d95747965c.png
+                )
+
+        )
+
+)
+ 
+
+
+
+                Array
+(
+    [0] => Array
+        (
+            [nombre_completo] => usuario 0
+            [email] => usuario0@0.com
+            [usuario] => cero
+            [password] => $2y$10$QNtluC96qxSJRx7nzMO98OCIlx1BbTw4Si/VPBV9NKqLyfkJexWRy
+            [avatar] => img/avatar1.png
+        )
+
+    [1] => Array
+        (
+            [nombre_completo] => usuario 1
+            [email] => usuario1@1.com
+            [usuario] => uno
+            [password] => $2y$10$RMu2utDfRV8vCdzkSQHvEOMSDf047Qkam9vvL/5Uc9/D6BX9/Gufa
+            [avatar] => img/avatar1.png
+        )
+
+    [2] => Array
+        (
+            [nombre_completo] => usuario 3
+            [email] => usuario3@usuario3.com
+            [usuario] => tres
+            [password] => $2y$10$R4I6igNQAFtxHusH20o5uu8jvyGRS2lgwAeGbxg08u4fmY0sH.MrW
+            [avatar] => img/avatar1.png
+        )
+
+    [3] => Array
+        (
+            [nombre_completo] => usuario 4
+            [email] => cuatro@4.com
+            [usuario] => cuatro
+            [password] => $2y$10$YFbh3BjTXMJkS41bIVC08uxgIxhCxwRitAP7AyTKaIku0W0WNEBfK
+            [avatar] => img/5b1d8a1ae8f6a.png
+        )
+
+    [4] => Array
+        (
+            [nombre_completo] => uusario 5
+            [email] => cinco@5.com
+            [usuario] => cinco
+            [password] => $2y$10$RN5lsPItHZOZERQtC2dPDeexDUS1/.v2wO0VJsTXRTITBrycOc4zi
+            [avatar] => img/5b1d8a7fa7fb8.png
+        )
+
+    [5] => Array
+        (
+            [nombre_completo] => usuario 6
+            [email] => seis@6.com
+            [usuario] => seis
+            [password] => $2y$10$fuUTJU5lC6/zoKV1OWE7jeuH/lma/aZnx.Wkdn/Rgui9dY0xSqvOi
+            [avatar] => img/avatar1.png
+        )
+
+    [6] => Array
+        (
+            [nombre_completo] => usuario siete
+            [email] => siete@7.com
+            [usuario] => siete
+            [password] => $2y$10$2E4AuoPri0krjNpluU1Yl.OOG4yfYeBeKjuxMZ.6aNCLLJsoTKq0K
+            [avatar] => img/5b1d95747965c.png
+        )
+
+)
+            
+
+                Array
+(
+    [nombre_completo] => usuario siete
+    [email] => siete@7.com
+    [usuario] => siete
+    [password] => $2y$10$2E4AuoPri0krjNpluU1Yl.OOG4yfYeBeKjuxMZ.6aNCLLJsoTKq0K
+    [avatar] => img/5b1d95747965c.png
+)
+
+1521606710

@@ -7,7 +7,7 @@
     <title>Group Trip</title>
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
-    <link rel="stylesheet" href="css/stylefaq.css">
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
     <div class="container">
@@ -17,19 +17,26 @@
             <h1><img src="img/avion1-50.jpg"><a href="home.php">Group Trip</a></h1>
           </div>
           <?php require_once('nav.php'); ?>
+          <?php $usuario = retornaUsuario($_SESSION['login']); ?>
         </header>
         <main>
           <section class="content">
-            <h3 class="conectate">Preguntas frecuentes</h3>
+            <h2>No tendrás un viaje aburrido!!  <?php echo $usuario['nombre_completo']; ?></h2>
+            <p class="intro"> Red Social que permite comunicarse con otras personas con mismos intereses y  posibilidades de viajar a distintas ciudades del mundo.</p>
+            <p>Completá tus datos y ponete en contacto con gente cerca tuyo que quieren ir a dónde vas vos.</p>
+            <h3 class="conectate">Conectate al mundo</h3>
+          </section>
+
+          <section class="login registrado">
+            
+              <a href='logout.php'>Logout</a>
+              <br>
+              
+              <a href="bienvenida.php">Volver a tu página personal </a>
+  
+            
           </section>
         </main>
-          <ul>
-            <li><h3>pregunta nro 1</h3></li>
-              <li><h3>pregunta nro 2</h3></li>
-              <li><h3>pregunta nro 3</h3></li>
-              <li><h3>pregunta nro 4</h3></li>
-              <li><h3>pregunta nro 5</h3></li>
-          </ul>
       </section>
       <aside class="right">
       </aside>

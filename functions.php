@@ -43,7 +43,11 @@ function validarDatosLogin($datos){
   if ($datos["password"]=="") {
     $errores["password"]= "Por favor ingrese una contraseña";
   }
-  
+
+
+  if (!comprobarLogin($datos['email'], $datos['password'])) {
+      $errores["email"]="No corresponde el email del usario con la contraseña";# code...
+  }  
 
   return $errores;
 

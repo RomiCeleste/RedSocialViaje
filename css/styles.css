@@ -8,17 +8,15 @@
 }
 ul {
   padding: 0;
-  background-color: gray;
   font-family: 'Slabo 27px';
   font-size: 20px;
-  color: white;
 }
 li {
     list-style: none;
 }
 
 body {
-  background-color: #59ADFD;
+  background-color: #94CFFF;
   font: sans-serif;
 }
 
@@ -48,6 +46,8 @@ body {
 
 .header-class,
 .nav ul {
+  background-color:#BF7427;
+  color: white;
   /*Flex*/
   display: flex;
   flex-wrap: wrap;
@@ -60,9 +60,15 @@ body {
 .nav ul {
   justify-content: space-around;
 }
+.nav li{
+  padding: 0 25px
+}
+.nav li:hover{
+  background-color: #9e5e1c;
+}
 
 .header-class{
-  background-color: #660675;
+  background-color: #94CFFF;
 }
 h1{
   font-family: 'Slabo 27px';
@@ -72,9 +78,10 @@ h1{
 
 }
 h2{
-  font-family: "Titan One";
-  font-size: 40px;
+  font-family: "Cabin Sketch";
+  font-size: 60px;
   text-align: center;
+  color: white;
 }
 p{
   text-align: center;
@@ -84,11 +91,11 @@ p{
   margin: 70px;
 }
 .conectate{
-  font-family:'Slabo 27px';
+  font-family:'Cabin Sketch';
   font-size: 40px;
   color: white;
   text-align: center;
-  background-color: #660675;
+  background-color: #BF7427;
 }
 form{
   font-family: 'Slabo 27px';
@@ -108,8 +115,47 @@ a:visited {
 
 
 div.registrarse{
-  background-color: #660675;
+  background-color: #BF7427;
   text-align: center;
   color; white;
   font-size: 30px;
+}
+
+div.container{
+  font-family: 'Slabo 27px';
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+legend{
+  font-family: "Titan One";
+  font-size: 45px;
+  text-align: center;
+}
+div.send{
+  font-size: 50px;
+  text-align: center;
+  text-decoration: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.send{
+display: flex;
+justify-content: center;
+padding: 20px;
+
+}
+
+#fg_membersite {
+  text-align: center;
 }

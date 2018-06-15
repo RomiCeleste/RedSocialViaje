@@ -1,3 +1,6 @@
+*{
+  border-radius: 20px;
+}
 body{
   background-image: url(../img/agencias-de-viajes-talavera-dela-reina.jpeg);
   background-size: cover;

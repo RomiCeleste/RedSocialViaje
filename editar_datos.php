@@ -1,17 +1,37 @@
-<?php 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/styleform.css">
+    <link rel="stylesheet" href="">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
+    <title>Contact us</title>
+</head>
+	<body>
+
+    <div id='fg_membersite'>
+        <form id='register' action="" method='post' enctype="multipart/form-data">
+
+        </form>
+
+  </body>
+</html>
+
+<?php
 require_once 'functions.php';
 session_start();
 
 if(!isset($_SESSION['login'])){
 	header('Location:home.php');
-	
+
 }
 
 
 
 if ($_POST) {
-    
-   
+
+
     //    $errores = validarDatos($_POST);
     //    if(empty($errores)){
             guardarDatosNuevos($_POST,$_FILES['imagen']);
@@ -35,13 +55,13 @@ echo "<br>";
 <body>
 	<form id='register' method='post' enctype="multipart/form-data">
             <div>
-                <h1>Cambialos</h1>
+
 
                 <div><span class='error'></span></div>
                 <div class='container'>
                     <label for='name' >Nombre completo</label><br/>
                     <input type='text' name='nombre_completo' id='name' value='<?php echo $usuario["nombre_completo"];?>' maxlength="50" /><br/>
-                    <span id='register_name_errorloc' class='error'><?php echo isset($errores["nombre_completo"])? $errores["nombre_completo"]:"";?></span> 
+                    <span id='register_name_errorloc' class='error'><?php echo isset($errores["nombre_completo"])? $errores["nombre_completo"]:"";?></span>
                 </div>
                 <div class='container'>
                     <label for='email' >Email</label><br/>
@@ -53,12 +73,8 @@ echo "<br>";
                     <input type='text' name='usuario' id='username' value='<?php echo $usuario["usuario"]; ?>' maxlength="50" /><br/>
                     <span id='register_username_errorloc' class='error'><?php echo isset($errores["usuario"])? $errores["usuario"]:"";?></span>
                 </div>
-                <div class='container' style='height:80px;'>
-                    
-                    <input type='hidden' name='password' id='password' maxlength="50" value='<?php echo $usuario["password"]; ?>'/>
-                    
-                </div>
                 
+
                 <label for='foto' >Editar Imagen</label><br/>
                 <div class='container' style='height:80px;'>
                     <label for='imagen' >Subir Nueva Imagen</label><br/>
@@ -70,12 +86,12 @@ echo "<br>";
 
                 </div>
 
-                
+
                 <div class='send'>
                     <input type='submit' value='Enviar' />
                 </div>
 
-                
+
 
             </div>
         </form>
@@ -86,4 +102,3 @@ echo "<br>";
 <a href="logout.php">Logout</a>
 <br>
 <a href="bienvenida.php">Volver sin cambiar nada</a>
-

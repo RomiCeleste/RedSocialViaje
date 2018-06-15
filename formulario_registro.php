@@ -48,7 +48,7 @@ if(isset($_SESSION['login'])){
                 <div class='container'>
                     <label for='name' >Nombre completo</label><br/>
                     <input type='text' name='nombre_completo' id='name' value='<?php include_once "php/formulario_value_nombre.php"; ?>' maxlength="50" /><br/>
-                    <span id='register_name_errorloc' class='error'><?php echo isset($errores["nombre_completo"])? $errores["nombre_completo"]:"";?></span> 
+                    <span id='register_name_errorloc' class='error'><?php echo isset($errores["nombre_completo"])? $errores["nombre_completo"]:"";?></span>
                 </div>
                 <div class='container'>
                     <label for='email' >Email</label><br/>
@@ -62,14 +62,14 @@ if(isset($_SESSION['login'])){
                     <span id='register_username_errorloc' class='error'><?php echo isset($errores["usuario"])? $errores["usuario"]:"";?></span>
                 </div>
                 <div class='container' style='height:80px;'>
-                    <label for='password' >Contaseña*</label><br/>
+                    <label for='password' >Contraseña*</label><br/>
                     <div class='pwdwidgetdiv' id='thepwddiv' ></div>
                     <input type='password' name='password' id='password' maxlength="50" />
                     <div id='register_password_errorloc' class='error' style='clear:both'><?php echo isset($errores["password"])? $errores["password"]:"";?></div>
                 </div>
 
                 <div class='container' style='height:80px;'>
-                    <label for='repassword' >Repetir Contaseña*</label><br/>
+                    <label for='repassword' >Repetir Contraseña*</label><br/>
                     <div class='pwdwidgetdiv' id='thepwddiv' ></div>
                     <input type='password' name='repassword' id='repassword' maxlength="50" />
                     <div id='register_repassword_errorloc' class='error' style='clear:both'><?php echo isset($errores["repassword"])? $errores["repassword"]:"";?></div>

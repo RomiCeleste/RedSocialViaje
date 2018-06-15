@@ -13,7 +13,7 @@
     <div id='fg_membersite'>
         <form id='register' action="" method='post' enctype="multipart/form-data">
             <div>
-                <h1>Gracias por Registrarte</h1>
+                <h1>Otros Viajeros</h1>
 
             </div>
         </form>
@@ -36,22 +36,12 @@ echo "Bienvenido/a: " . $usuario['nombre_completo'];
 echo("<br>");
 
 ?>
-<img src="<?php echo $usuario['avatar']; ?>" alt="imagen del usuario" width="254">
+<img src="<?php echo $usuario['avatar']; ?>" alt="imagen del usuario" width="150px">
 
 <br>
-<a href="editar_datos.php">Cambia tus datos</a>
-<br>
-<a href="logout.php">Logout</a>
 <br>
 <a href="home.php">Volver a la página principal</a>
 
-<br>
-<br>
-<br>
-<br>
-<div otros>
-<a href="otrosUsuarios.php" class="btn">OTROS USUARIOS</a>
-</div>
 <br>
 <br>
 <br>

@@ -1,13 +1,13 @@
 <?php 
 
 
-	if(isset($errores["nombre_completo"])){ 
+	if(isset($errores["email"])){ 
 		
 		echo "";
 	
 	}else { 
 		 if($_POST){
-		 	echo $_POST["nombre_completo"];
+		 	echo $_POST["email"];
 		 }else{
 		 	echo "";
 		 } 

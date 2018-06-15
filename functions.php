@@ -46,7 +46,7 @@ function validarDatosLogin($datos){
 
 
   if (!comprobarLogin($datos['email'], $datos['password'])) {
-      $errores["email"]="No corresponde el email del usario con la contraseña";# code...
+      $errores["login"]="No corresponde el email del usuario con la contraseña ingresada";# code...
   }  
 
   return $errores;
@@ -204,7 +204,8 @@ function comprobarLogin($email, $password){
     $bandera = 0;
     foreach ($array as $usuarios) {
         foreach ($usuarios as $usuario) {
-            if($usuario['email'] == $email && password_verify($password,$usuario['password'])){
+            if($usuario['email'] == $email && password_verify($password,$usuario['password']))
+            {
                 $bandera = 1;
             }
         }

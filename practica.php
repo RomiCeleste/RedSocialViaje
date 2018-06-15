@@ -1,5 +1,20 @@
 <?php 
 
+<div><label for="login">Username</label></div>
+        <div><input name="member_name" type="text" value="<?php if(isset($_COOKIE["member_login"])) { echo $_COOKIE["member_login"]; } ?>" class="input-field">
+    </div>
+    <div class="field-group">
+        <div><label for="password">Password</label></div>
+        <div><input name="member_password" type="password" value="<?php if(isset($_COOKIE["member_password"])) { echo $_COOKIE["member_password"]; } ?>" class="input-field"> 
+    </div>
+    <div class="field-group">
+        <div><input type="checkbox" name="remember" id="remember" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?> />
+        <label for="remember-me">Remember me</label>
+    </div>
+
+
+
+
 // $archivo_json = 'usuarios.json';
 //         if(file_exists($archivo_json)){
 //             echo "el archivo existe";

@@ -4,6 +4,7 @@
 
 * {
     box-sizing: border-box;
+    border-radius: 20px;
 }
 ul {
   padding: 0;

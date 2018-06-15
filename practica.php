@@ -1,18 +1,47 @@
 <?php 
+//if(isset($_POST["checkbox"]) && $_POST["checkbox"]=="on")
+        if(!empty($_POST['acordate'])){
+          setcookie("hola","hola",time()+(10*365*24*60*60));
+          setcookie("chau","chau",time()+(10*365*24*60*60));
+          echo $_COOKIE['hola'];
+          echo $_COOKIE['chau'];
+        }else{
+          if (isset($_COOKIE['email'])) {
+             setcookie("email","");
+          }
+          if (isset($_COOKIE['password'])) {
+             setcookie("password","");
+          }
+        }
 
-<div><label for="login">Username</label></div>
-        <div><input name="member_name" type="text" value="<?php if(isset($_COOKIE["member_login"])) { echo $_COOKIE["member_login"]; } ?>" class="input-field">
-    </div>
-    <div class="field-group">
-        <div><label for="password">Password</label></div>
-        <div><input name="member_password" type="password" value="<?php if(isset($_COOKIE["member_password"])) { echo $_COOKIE["member_password"]; } ?>" class="input-field"> 
-    </div>
-    <div class="field-group">
-        <div><input type="checkbox" name="remember" id="remember" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?> />
-        <label for="remember-me">Remember me</label>
-    </div>
+?>
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+     <form class="" method="post" action="">
+              
+              <label for="acordate">Recuérdame</label>
+              <input type="checkbox" id="inputacordate" name="acordate" value="on">
+              <br>
+              
+              <span id='register_email_errorloc' class='error'><?php echo isset($errores["login"])? $errores["login"]:"";?></span>
+              <br>
+              <button type="submit" name="loguear" class="btn">Log In</button>
+
+            </form>
+</body>
+</html>
+
+
+
+
+<?php 
 
 
 // $archivo_json = 'usuarios.json';
@@ -254,64 +283,64 @@ echo("<br>");
 // include_once 'bienvenida.php';
 
 
-$json_content= file_get_contents("usuarios.json");  // descargamos el contenido del archivo json
-  $array= json_decode($json_content,true);            // pasamos a array el contenido del archivo json
+// $json_content= file_get_contents("usuarios.json");  // descargamos el contenido del archivo json
+//   $array= json_decode($json_content,true);            // pasamos a array el contenido del archivo json
 
-$usuario_c = $_POST;
+// $usuario_c = $_POST;
 
-$imagen = cargarfoto1($_FILES['imagen']);
+// $imagen = cargarfoto1($_FILES['imagen']);
 
 
-if (isset($_POST['preservar'])){
-    foreach($array as $usuarios)
-    {
+// if (isset($_POST['preservar'])){
+//     foreach($array as $usuarios)
+//     {
         
-        foreach($usuarios as $clave => $usuario)
+//         foreach($usuarios as $clave => $usuario)
 
-        {
-            if ($usuario['email'] == $usuario_c['email']) {
+//         {
+//             if ($usuario['email'] == $usuario_c['email']) {
                 
-                $imagen2 = $array['usuarios'][$clave]['avatar'];              
-            }
+//                 $imagen2 = $array['usuarios'][$clave]['avatar'];              
+//             }
             
-        }
-    }
+//         }
+//     }
 
-}
+// }
 // var_dump($imagen);
 // echo("<br>");
 // var_dump($imagen2);
 
 
- var_dump($usuario_c);
- unset($usuario_c['preservar']);
-echo("<br>");
- var_dump($usuario_c);
- //array_chunk(input, size) 
- //array_slice() 
- exit(); 
+//  var_dump($usuario_c);
+//  unset($usuario_c['preservar']);
+// echo("<br>");
+//  var_dump($usuario_c);
+//  //array_chunk(input, size) 
+//  //array_slice() 
+//  exit(); 
 
 
- $usuario_c['avatar'] = $imagen;  // añadimos campo avatar
- //$usuario_c['password'] = $clave;  // sobreescribimos campo clave, porque no estará hasheado
+//  $usuario_c['avatar'] = $imagen;  // añadimos campo avatar
+//  //$usuario_c['password'] = $clave;  // sobreescribimos campo clave, porque no estará hasheado
 
 
   
   
   
-  foreach($array as $usuarios)
-    {
+//   foreach($array as $usuarios)
+//     {
         
-        foreach($usuarios as $clave => $usuario)
+//         foreach($usuarios as $clave => $usuario)
 
-        {
-            if ($usuario['email'] == $usuario_c['email']) {
+//         {
+//             if ($usuario['email'] == $usuario_c['email']) {
                 
-               $array['usuarios'][$clave] = $usuario_c;              
-            }
+//                $array['usuarios'][$clave] = $usuario_c;              
+//             }
             
-        }
-    }
+//         }
+//     }
 
 
    

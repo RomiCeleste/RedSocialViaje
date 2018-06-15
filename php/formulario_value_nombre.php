@@ -1,11 +1,8 @@
 <?php
 
-if(isset($_COOKIE["email"])) { 
-	echo $_COOKIE["email"]; 
 
-}else{
 	if(isset($errores["nombre_completo"])){ 
-	echo "";
+		echo "";
 	}
 	else { 
 		 if($_POST){
@@ -15,7 +12,7 @@ if(isset($_COOKIE["email"])) {
 		 } 
 		
 	}	
-}
+
 
  
 

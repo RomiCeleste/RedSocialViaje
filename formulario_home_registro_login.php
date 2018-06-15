@@ -40,7 +40,7 @@
 
               <!-- <input type="checkbox" id="acordate" value="acordate" name="acordate" <?php //if (isset($_COOKIE['email'])) { ?> checked <?php} ?>> -->
               <label for="acordate">Recuérdame</label>
-              <input type="checkbox" id="inputacordate" name="acordate" placeholder="Contraseña" pattern="[A-Za-z_-0-9]{1,20}"  value="">
+              <input type="checkbox" id="inputacordate" name="acordate" value="on">
               <br>
               <span id='register_email_errorloc' class='error'><?php echo isset($errores["email"])? $errores["email"]:"";?></span>
               <br>

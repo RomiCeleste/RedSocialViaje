@@ -34,14 +34,14 @@
                     <span id='register_username_errorloc' class='error'></span>
                 </div>
                 <div class='container' style='height:80px;'>
-                    <label for='password' >Contaseña*</label><br/>
+                    <label for='password' >Contraseña*</label><br/>
                     <div class='pwdwidgetdiv' id='thepwddiv' ></div>
                     <input type='password' name='password' id='password' maxlength="50" />
                     <div id='register_password_errorloc' class='error' style='clear:both'></div>
                 </div>
 
                 <div class='container' style='height:80px;'>
-                    <label for='repassword' >Repetir Contaseña*</label><br/>
+                    <label for='repassword' >Repetir Contraseña*</label><br/>
                     <div class='pwdwidgetdiv' id='thepwddiv' ></div>
                     <input type='repassword' name='repassword' id='repassword' maxlength="50" />
                     <div id='register_repassword_errorloc' class='error' style='clear:both'></div>

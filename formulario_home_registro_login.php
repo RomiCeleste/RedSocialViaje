@@ -1,7 +1,4 @@
-<?php 
-  
-  
- ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -18,7 +15,7 @@
       <section class="left">
         <header>
           <div class="header-class">
-            <h1><img src="img/avion1-50.jpg"><a href="home.php">Group Trip</a></h1>
+            <h1><img src="img/avion1-50.jpg"><a href="index.php">Group Trip</a></h1>
           </div>
           <?php require_once('nav.php'); ?>
         </header>

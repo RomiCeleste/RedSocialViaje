@@ -215,6 +215,23 @@ function comprobarLogin($email, $password){
 
 
 
+// listarUsuarios($email){
+//   $json = file_get_contents("usuarios.json");
+//   $array = json_decode($json,true);   
+//   foreach($array as $usuarios)
+//     {
+//         foreach($usuarios as $usuario)
+//         {
+//             if ($usuario['email'] != $email) {
+//                  return $usuario;
+//             }
+            
+//         }
+//     }
+  
+// }
+
+
 
 function asignarId()
 {

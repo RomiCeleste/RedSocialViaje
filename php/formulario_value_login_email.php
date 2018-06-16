@@ -19,11 +19,6 @@ if(isset($_COOKIE["email"])) {
 	
 }
 
-	
-//}
-
-
-
 
 
  ?>

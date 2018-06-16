@@ -1,3 +1,17 @@
+<?php
+require_once 'functions.php';
+session_start();
+
+if(!isset($_SESSION['login'])){     // un usuario si sesión es enviado a la página de inicio
+    header('Location:index.php');
+
+}
+$usuario = retornaUsuario($_SESSION['login']);  // obtenemos todos los datos del usuario con su mail
+
+ $json = file_get_contents("usuarios.json");
+  $array = json_decode($json,true); 
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,46 +20,61 @@
     <link rel="stylesheet" href="">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
-    <title>Contact us</title>
+    <title>Otros usuarios</title>
 </head>
 <body>
 
     <div id='fg_membersite'>
-        <form id='register' action="" method='post' enctype="multipart/form-data">
-            <div>
-                <h1>Otros Viajeros</h1>
+    
+        <div>
+            <h1>Otros Viajeros</h1>
 
-            </div>
-        </form>
+        </div>
 
-    </body>
+        <br>
+        <br>
+        <div>
+            <?php  
+            foreach ($array as $usuarios) {
+                foreach ($usuarios as $usuario1) {
+                    if ($usuario['email'] != $usuario1['email']){
+                ?>     
+                    <div>
+                        <center>
+                            <div><img src="<?php echo($usuario1['avatar']) ?>" width="100"></div>
+                            <p><?php echo($usuario1['nombre_completo']) ?></p><br><br><br>
+                            
+                        </center>
+                    </div>
+            <?php 
+                    }
+                }
+            }        
+             ?>              
+                    
+        </div>
+        <br>
+        <br>
+        <div>
+            <a href="bienvenida.php" class="btn">Volver a tu página</a><br>
+            <br>
+            <a href="logout.php">Logout</a>
+            <br>
+            <a href="index.php">Volver a la página principal</a>
+        </div>
+    </div>
+</body>
 </html>
 
 
-<?php
-require_once 'functions.php';
-session_start();
 
-if(!isset($_SESSION['login'])){     // un usuario si sesión es enviado a la página de inicio
-	header('Location:home.php');
 
-}
-$usuario = retornaUsuario($_SESSION['login']);  // obtenemos todos los datos del usuario con su mail
-echo "Bienvenido/a: " . $usuario['nombre_completo'];
 
-echo("<br>");
 
-?>
-<img src="<?php echo $usuario['avatar']; ?>" alt="imagen del usuario" width="150px">
 
-<br>
-<br>
-<a href="home.php">Volver a la página principal</a>
 
-<br>
-<br>
-<br>
-<br>
-<div boton>
-<a href="home.php" class="btn">VOLVER</a>
-</div>
+
+
+
+
+        

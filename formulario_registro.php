@@ -22,8 +22,6 @@ if(isset($_SESSION['login'])){
 
 
 
-
-
 ?>
 
 
@@ -86,7 +84,7 @@ if(isset($_SESSION['login'])){
                     <input type='submit' name='Submit' value='Enviar' />
                 </div>
 
-                <a href="home.php" class="btn">VOLVER</a>
+                <a href="index.php" class="btn">VOLVER</a>
 
             </div>
         </form>

@@ -9,15 +9,12 @@
       if(empty($errores)){
         if(!empty($_POST['acordate'])){
           setcookie("email",$_POST['email'],time()+(10*365*24*60*60));
-          setcookie("password",$_POST['password'],time()+(10*365*24*60*60));
-          echo $_COOKIE['email'];
+                    
         }else{
           if (isset($_COOKIE['email'])) {
              setcookie("email","");
           }
-          if (isset($_COOKIE['password'])) {
-             setcookie("password","");
-          }
+          
         }
         
         $_SESSION['login'] = $_POST['email'];

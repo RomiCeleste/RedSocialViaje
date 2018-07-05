@@ -1,13 +1,24 @@
 <?php 
-require_once 'functions.php';
+require_once 'datosMysql.php';
+require_once 'datosJson.php';
 session_start();
 
 if(!isset($_SESSION['login'])){     // un usuario si sesión es enviado a la página de inicio
 	header('Location:home.php');
 	
 }
-$usuario = retornaUsuario($_SESSION['login']);  // obtenemos todos los datos del usuario con su mail
 
+$modo = file_get_contents("tipo.txt");
+
+if($modo == "json"){
+    $json = new DatosJson();
+    $usuario = $json->retornaUsuario($_SESSION['login']);  // obtenemos todos los datos del usuario con su mail
+
+}else{
+    $datosM = new DatosMysql();
+    $usuario = $datosM->retornaUsuario($_SESSION['login']);
+
+}
 	
 ?>
 <!DOCTYPE html>
@@ -24,8 +35,8 @@ $usuario = retornaUsuario($_SESSION['login']);  // obtenemos todos los datos del
 
     <div id='fg_membersite'>
     
-        <h1>Bienvenido/a <?php echo $usuario['nombre_completo']; ?></h1><br>
-        <img src="<?php echo $usuario['avatar']; ?>" alt="imagen del usuario" width="254">
+        <h1>Bienvenido/a <?php if($modo=='json'){echo $usuario['nombre_completo'];}else{echo $usuario->getNombre_completo();}?></h1><br>
+        <img src="<?php if($modo=='json'){echo $usuario['avatar'];}else{echo $usuario->getAvatar();} ?>" alt="imagen del usuario" width="254">
 
         <br>
         <a href="editar_datos.php">Cambia tus datos</a>
@@ -45,6 +56,7 @@ $usuario = retornaUsuario($_SESSION['login']);  // obtenemos todos los datos del
 	</div>
 </body>
 </html>
+
 
 
 

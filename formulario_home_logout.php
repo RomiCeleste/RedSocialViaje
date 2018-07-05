@@ -17,11 +17,14 @@
             <h1><img src="img/avion1-50.jpg"><a href="home.php">Group Trip</a></h1>
           </div>
           <?php require_once('nav.php'); ?>
-          <?php $usuario = retornaUsuario($_SESSION['login']); ?>
+          <?php if($modo == "json"){$array = $usuario->retornaUsuario($_SESSION['login']);}
+                if ($modo == "mysql"){$usu = $usuario->retornaUsuario($_SESSION['login']);} ?>
+          
+
         </header>
         <main>
           <section class="content">
-            <h2>No tendrás un viaje aburrido!!  <?php echo $usuario['nombre_completo']; ?></h2>
+            <h2>No tendrás un viaje aburrido!!  <?php if($modo == "json"){echo $array['nombre_completo'];}else {echo $usu->getNombre_completo();} ?></h2>
             <p class="intro"> Red Social que permite comunicarse con otras personas con mismos intereses y  posibilidades de viajar a distintas ciudades del mundo.</p>
             <p>Completá tus datos y ponete en contacto con gente cerca tuyo que quieren ir a dónde vas vos.</p>
             <h3 class="conectate">Conectate al mundo</h3>

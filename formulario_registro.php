@@ -1,23 +1,48 @@
 <?php
-include_once "functions.php";
-
+require_once 'validacionMysql.php';
+require_once 'validacionJson.php';
+require_once 'datosMysql.php';
+require_once 'datosJson.php';
 
 if(isset($_SESSION['login'])){
     header("Location:bienvenida.php");
 }else{
-    if ($_POST) {
-       $errores = validarDatos($_POST);
-       if(empty($errores)){
-            $imagen = cargarFoto1($_FILES['imagen']);
-            $usuario = crearUsuario($_POST,$imagen);
-            //var_dump($usuario);
-            guardarUsuario($usuario);
-            // iniciamos sesión
-            session_start();
-            $_SESSION['login'] = $_POST['email'];   // comienza la sesión usuario, con el mail
-            header("Location:bienvenida.php");
-       }
+    $modo = file_get_contents("tipo.txt");
+    if($modo == "mysql"){
+        if ($_POST) {
+            $validacionM = new ValidacionMysql();
+            $errores = $validacionM->validarDatos($_POST);
+            if(empty($errores)){
+                $datosM = new DatosMysql();
+                $imagen = $datosM->cargarFoto1($_FILES['imagen']);
+                $usuario = $datosM->crearUsuario($_POST['nombre_completo'],$_POST['usuario'],$_POST['email'],$_POST['password'],$imagen);
+                //var_dump($usuario);
+                $datosM->guardarUsuario($usuario);
+                // iniciamos sesión
+                session_start();
+                $_SESSION['login'] = $_POST['email'];   // comienza la sesión usuario, con el mail
+                header("Location:bienvenida.php");
+            }
+        }
+    
+    }else{
+        if ($_POST) {
+            $validacionJ = new ValidacionJson();
+            $errores = $validacionJ->validarDatos($_POST);
+            if(empty($errores)){
+                $datosJ = new DatosJson();
+                $imagen = $datosJ->cargarFoto1($_FILES['imagen']);
+                $usuario = $datosJ->crearUsuario($_POST,$imagen);
+                //var_dump($usuario);
+                $datosJ->guardarUsuario($usuario);
+                // iniciamos sesión
+                session_start();
+                $_SESSION['login'] = $_POST['email'];   // comienza la sesión usuario, con el mail
+                header("Location:bienvenida.php");
+            }
+        }  
     }
+    
 }
 
 

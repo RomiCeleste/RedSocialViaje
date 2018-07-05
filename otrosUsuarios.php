@@ -1,15 +1,29 @@
 <?php
-require_once 'functions.php';
+require_once 'datosMysql.php';
+require_once 'datosJson.php';
 session_start();
 
 if(!isset($_SESSION['login'])){     // un usuario si sesión es enviado a la página de inicio
     header('Location:index.php');
 
 }
-$usuario = retornaUsuario($_SESSION['login']);  // obtenemos todos los datos del usuario con su mail
 
- $json = file_get_contents("usuarios.json");
-  $array = json_decode($json,true); 
+$modo = file_get_contents("tipo.txt");
+
+if($modo == "json"){
+    $usuario = new DatosJson();
+    $usu = $usuario->retornaUsuario($_SESSION['login']);  // obtenemos todos los datos del usuario con su mail
+    $json = file_get_contents("usuarios.json");
+    $array = json_decode($json,true); 
+
+}else{
+    $usuario = new DatosMysql();
+    $array = $usuario->otrosUsuarios($_SESSION['login']);
+
+
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -34,22 +48,35 @@ $usuario = retornaUsuario($_SESSION['login']);  // obtenemos todos los datos del
         <br>
         <br>
         <div>
-            <?php  
+        <?php 
+        if($modo == "json"){
             foreach ($array as $usuarios) {
                 foreach ($usuarios as $usuario1) {
-                    if ($usuario['email'] != $usuario1['email']){
-                ?>     
+                     if ($usu['email'] != $usuario1['email']){
+        ?>     
                     <div>
                         <center>
+                            <h3><?php echo($usuario1['nombre_completo']) ?></h3>
+                            <br>
                             <div><img src="<?php echo($usuario1['avatar']) ?>" width="100"></div>
-                            <p><?php echo($usuario1['nombre_completo']) ?></p><br><br><br>
+                            <br><br><br>
                             
                         </center>
                     </div>
-            <?php 
+        <?php 
                     }
                 }
-            }        
+            }
+        }else{
+            foreach ($array as $usuario) {
+            ?>  
+              <h3><?php echo $usuario['nombre_completo']; ?> </h3>
+              <br>
+               <img src="<?php echo $usuario['avatar'] ?>" width="100">
+              <br><br><br>
+            <?php    
+            }
+        }            
              ?>              
                     
         </div>

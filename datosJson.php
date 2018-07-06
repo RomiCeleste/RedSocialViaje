@@ -117,6 +117,31 @@ class DatosJson extends Datos
 	}
 
 
+	public function pasarAjson2(){
+		$modelo = new Conexion();
+        // guardo la conexión en una variable
+	    $conexion = $modelo->getConexion();
+
+	    $sql = 'SELECT nombre_completo, email, usuario, password, avatar FROM usuarios';
+        $consulta = $conexion->prepare($sql);
+        $consulta->execute();
+
+        $json_content= file_get_contents("usuarios.json");  // descargamos el contenido del archivo json
+	    $array_json= json_decode($json_content,true);
+	    $cadenas = implode(",",$array_json);
+	    exit();
+        $registros = $consulta->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($registros as $registro) {
+            if ( strpos($cadenas, $registro['email']) ) {
+             		$array_json["usuarios"][]= $registro;
+            }
+	          
+        }
+    	exit();
+	}
+
+
 }
 	
 

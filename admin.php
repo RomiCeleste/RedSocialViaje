@@ -12,11 +12,15 @@
 	    
     }
 
+    if(isset($_POST['eljson'])){
+        $datosj = new DatosJson();
+        $datosj->pasarAjson2();
+    }
+
     if(isset($_POST['json'])){
         $datosJ = new DatosJson();
     	$nombre = $_POST['json'];
     	$datosJ->pasarAjson($nombre);
-
     }
 
     if (isset($_POST['info'])) {
@@ -28,7 +32,7 @@
     if (isset($_POST['admin'])) {
        $clave = $_POST['admin'];
        $db = new datosMysql();
-       $db->crearTabla($clave);
+       $db->crearBaseDatos($clave);
     }
     
 
@@ -56,7 +60,7 @@
         <input type="submit" value="subir json" name="submit">
     </form>
     <br><br>
-    <h2>Migrar de Base de Datos a Json</h2>
+    <h2>Migrar de Base de Datos a un Json</h2>
     <form  method="post" enctype="multipart/form-data">
         Ingrese el nombre del archivo json a crearse:
         <input type="text" name="json" id="json">
@@ -64,7 +68,13 @@
     </form>
     <br>
     <br>
-    <h2>Almacenar la info en la Base de Datos o en Jason</h2>
+    <h2>Migrar de Base de Datos a usuarios.json </h2>
+    <form  method="post" enctype="multipart/form-data">
+        <input type="checkbox" name="eljson" value="usuarios.json" checked>
+        <input type="submit" value="subir a usuarios.json" name="submit">
+    </form>
+    <br><br>
+    <h2>Almacenar la info en la Base de Datos o en  usuarios.json</h2>
     <form method="post">
         Seleccione el modo:
         <br>

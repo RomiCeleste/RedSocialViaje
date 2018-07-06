@@ -160,12 +160,12 @@ class DatosMysql extends Datos
 	    $conexion = $modelo->getConexion();
 	    
 	    //creamos la base de datos si no existe
-	 	$crear_db = $conexion->prepare('CREATE DATABASE IF NOT EXISTS red_social_viaje COLLATE utf8_spanish_ci');   
+	 	$crear_db = $conexion->prepare('CREATE DATABASE IF NOT EXISTS red_social_viajes COLLATE utf8_spanish_ci');   
 	 	$crear_db->execute();
 	 
 	    //decimos que queremos usar la base que acabamos de crear
 		if($crear_db):
-		  $usar_db = $conexion->prepare('USE red_social_viaje');   
+		  $usar_db = $conexion->prepare('USE red_social_viajes');   
 		  $usar_db->execute();
 		endif;
 	 
@@ -199,9 +199,46 @@ class DatosMysql extends Datos
 	 
 	}
 
+	public function crearBaseDatos($password){
+		$conex = new Conexion();
+		$con = $conex->getConexion2();
 
+	 $crear_db = $con->prepare('CREATE DATABASE IF NOT EXISTS nueva COLLATE utf8_spanish_ci');   
+	 $crear_db->execute();
+	 
+	 //decimos que queremos usar la tabla que acabamos de crear
+	 if($crear_db):
+	 $use_db = $con->prepare('USE nueva');   
+	 $use_db->execute();
+	 endif;
+	 
+	 //si se ha creado la base de datos y estamos en uso de ella creamos las tablas
+	 if($use_db):
+	 //creamos la tabla usuarios
+	 $crear_tb_users = $con->prepare('
+	 CREATE TABLE IF NOT EXISTS usuarios (
+			id int(11) NOT NULL AUTO_INCREMENT,
+			nombre_completo varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+			usuario varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+			email varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+			password varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+			avatar varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+			PRIMARY KEY (id))'); 
+	    
+	 $crear_tb_users->execute();
+	 
+	 //creamos la tabla posts
+	 $insertar_admin = $con->prepare('
+			 INSERT INTO usuarios (nombre_completo, usuario, email, password, avatar) VALUES
+			 ("admin","admin","admin@admin.com",:password,"img/avatar1.png")'); 
+
+ 	$hasheado = password_hash($password, PASSWORD_DEFAULT);
+ 	$insertar_admin->bindParam(':password',$hasheado);
+	$insertar_admin->execute();
+	 endif;
+	 
+	 }
 }
 
+?>
 
-
- ?>

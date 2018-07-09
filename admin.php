@@ -63,7 +63,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Administración</h1>
+    <h1>Panel de Administración</h1>
     <br>
     <br>
     <h2>Migrar de Json a la Base de Datos</h2>

@@ -80,7 +80,9 @@ class ValidacionJson extends Validacion
 	    $this->errores["password"]= "Por favor ingrese una contraseña";
 	  }
 
-	  parent::validarAdmin($datos['email']);
+	  if(parent::validarAdmin($datos['email'])){
+	  	   header('Location:admin.php');
+	  }
 
 	  if (!self::comprobarLogin($datos['email'], $datos['password'])) {
 	      $this->errores["login"]="No corresponde el email del usuario con la contraseña ingresada";

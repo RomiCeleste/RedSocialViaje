@@ -9,6 +9,7 @@ abstract class Datos
 	//abstract public function crearUsuario();
 	//abstract public function guardarDatosNuevos();
 	abstract public function retornaUsuario($email);
+	abstract public function borrarUsuario($email);
     //abstract public function otrosUsuarios($email);
 
 

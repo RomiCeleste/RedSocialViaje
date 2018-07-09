@@ -38,7 +38,9 @@ abstract class Validacion
 
     public function validarAdmin($email){
         if($email == "admin@admin.com"){
-            header('Location:admin.php');
+            return true;
+        }else{
+            return false;
         }
     }
 

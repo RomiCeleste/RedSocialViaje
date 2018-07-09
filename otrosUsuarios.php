@@ -49,35 +49,22 @@ if($modo == "json"){
         <br>
         <div>
         <?php 
+        
         if($modo == "json"){
             foreach ($array as $usuarios) {
                 foreach ($usuarios as $usuario1) {
-                     if ($usu['email'] != $usuario1['email']){
-        ?>     
-                    <div>
-                        <center>
-                            <h3><?php echo($usuario1['nombre_completo']) ?></h3>
-                            <br>
-                            <div><img src="<?php echo($usuario1['avatar']) ?>" width="100"></div>
-                            <br><br><br>
-                            
-                        </center>
-                    </div>
-        <?php 
+                    if (($usu['email'] != $usuario1['email']) && $usuario1['email'] != "admin@admin.com"){
+                        include 'php/otrosUsuarios.php';
                     }
                 }
             }
         }else{
-            foreach ($array as $usuario) {
-            ?>  
-              <h3><?php echo $usuario['nombre_completo']; ?> </h3>
-              <br>
-               <img src="<?php echo $usuario['avatar'] ?>" width="100">
-              <br><br><br>
-            <?php    
+            foreach ($array as $usuario1) {
+                include 'php/otrosUsuarios.php';   
             }
         }            
-             ?>              
+        
+        ?>              
                     
         </div>
         <br>

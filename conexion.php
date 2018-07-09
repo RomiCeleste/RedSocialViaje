@@ -6,7 +6,7 @@ class Conexion
 	// private	$pass = '1234';
 	// private	$bd = "red_social_viaje";
 
-	private $dsn = 'mysql:host=localhost;dbname=red_social_viajes;charset=utf8mb4;port:3306';
+	private $dsn = 'mysql:host=localhost;dbname=red_social_viaje;charset=utf8mb4;port:3306';
 	private $user = 'root';
 	private $pass = 'root';
 	protected $pdo;

@@ -12,10 +12,17 @@
 	    
     }
 
+    if(isset($_POST['bdjson'])){
+        $datosM = new DatosMysql();
+        $json = "usuarios.json";
+        $datosM->migrarABaseDeDatos($json);
+    }
+
     if(isset($_POST['eljson'])){
         $datosj = new DatosJson();
         $datosj->pasarAjson2();
     }
+
 
     if(isset($_POST['json'])){
         $datosJ = new DatosJson();
@@ -33,6 +40,12 @@
        $clave = $_POST['admin'];
        $db = new datosMysql();
        $db->crearBaseDatos($clave);
+    }
+
+    if (isset($_POST['info2'])) {
+       $modo = $_POST['info2'];
+       setcookie("base_datos",$modo);
+       header('Location: todosUsuarios.php');
     }
     
 
@@ -53,14 +66,14 @@
     <h1>Administración</h1>
     <br>
     <br>
-    <h2>Migrar de Json a Base de Datos</h2>
+    <h2>Migrar de Json a la Base de Datos</h2>
     <form  method="post" enctype="multipart/form-data">
         Seleccione el archivo json para procesar:
         <input type="file" name="json" id="json">
         <input type="submit" value="subir json" name="submit">
     </form>
     <br><br>
-    <h2>Migrar de Base de Datos a un Json</h2>
+    <h2>Migrar de la Base de Datos a un Json</h2>
     <form  method="post" enctype="multipart/form-data">
         Ingrese el nombre del archivo json a crearse:
         <input type="text" name="json" id="json">
@@ -68,13 +81,19 @@
     </form>
     <br>
     <br>
-    <h2>Migrar de Base de Datos a usuarios.json </h2>
+    <h2>Migrar de usuarios.json a la Base de Datos </h2>
     <form  method="post" enctype="multipart/form-data">
-        <input type="checkbox" name="eljson" value="usuarios.json" checked>
+        <input type="hidden" name="bdjson" value="bdjson" >
+        <input type="submit" value="subir a la base de datos" name="submit">
+    </form>
+    <br><br>
+    <h2>Migrar de la Base de Datos a usuarios.json </h2>
+    <form  method="post" enctype="multipart/form-data">
+        <input type="hidden" name="eljson" value="eljson" >
         <input type="submit" value="subir a usuarios.json" name="submit">
     </form>
     <br><br>
-    <h2>Almacenar la info en la Base de Datos o en  usuarios.json</h2>
+    <h2>Almacenar la información en la Base de Datos o en  usuarios.json</h2>
     <form method="post">
         Seleccione el modo:
         <br>
@@ -88,6 +107,16 @@
     <form method="post">
         ingrese el password del administrador:
         <input type="text" name="admin" id="admin">
+        <input type="submit" value="Seleccionar" name="submit">
+    </form>
+    <br>
+    <br>
+    <h2>Ver a todos los usuarios registrados</h2>
+    <form method="post">
+        Seleccione la base:
+        <br>
+        <input type="radio" name="info2" value="mysql" checked>Mysql
+        <input type="radio" name="info2" value="json">Json
         <input type="submit" value="Seleccionar" name="submit">
     </form>
     <br>

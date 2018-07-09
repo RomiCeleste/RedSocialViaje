@@ -2,6 +2,7 @@
 require_once 'conexion.php';
 require_once 'usuario.php';
 require_once 'datos.php';
+require_once 'validacionJson.php';
 
 
 class DatosJson extends Datos
@@ -126,21 +127,46 @@ class DatosJson extends Datos
         $consulta = $conexion->prepare($sql);
         $consulta->execute();
 
-        $json_content= file_get_contents("usuarios.json");  // descargamos el contenido del archivo json
-	    $array_json= json_decode($json_content,true);
-	    $cadenas = implode(",",$array_json);
-	    exit();
         $registros = $consulta->fetchAll(PDO::FETCH_ASSOC);
 
+    	    
+        $validar = new ValidacionJson();
+
+        $json = file_get_contents("usuarios.json");
+	    $array = json_decode($json,true);
+
         foreach ($registros as $registro) {
-            if ( strpos($cadenas, $registro['email']) ) {
-             		$array_json["usuarios"][]= $registro;
-            }
-	          
-        }
-    	exit();
+      
+	    	if(!$validar->mailRepetido($registro['email'])){
+	    		$array['usuarios'][] = $registro;
+	    	}
+		}
+
+		$array2 = json_encode($array);                // lo pasamos a json
+	    file_put_contents("usuarios.json",$array2); 
 	}
 
+
+
+	public function borrarUsuario($email){
+
+		$json = file_get_contents("usuarios.json");
+	    $array = json_decode($json,true); 
+		foreach($array as $usuarios)
+	    {
+	        foreach($usuarios as $key => $usuario)
+	        {
+	            if ($usuario['email'] == $email) {
+	               //var_dump($array["usuarios"][$key]);	            	
+	               unset($array["usuarios"][$key]);
+	            }
+	            
+	        }
+	    }    
+	    $array2 = json_encode($array);                
+	    file_put_contents("usuarios.json",$array2);
+
+	}    
 
 }
 	

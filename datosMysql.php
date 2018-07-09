@@ -2,6 +2,7 @@
 require_once 'conexion.php';
 require_once 'usuario.php';
 require_once 'datos.php';
+require_once 'validacionMysql.php';
 
 class DatosMysql extends Datos
 {
@@ -114,7 +115,7 @@ class DatosMysql extends Datos
        // guardo la conexión en una variable
 	   $conexion = $modelo->getConexion();
 
-	   $sql = 'SELECT nombre_completo, email, usuario, password, avatar FROM usuarios WHERE email != :email';
+	   $sql = 'SELECT nombre_completo, email, usuario, password, avatar FROM usuarios WHERE email != :email OR email != "admin@admin.com"';
        $consulta = $conexion->prepare($sql);
        $consulta->bindParam(':email', $email);
        $consulta->execute();
@@ -136,6 +137,8 @@ class DatosMysql extends Datos
 		$json_content= file_get_contents($json);  // descargamos el contenido del archivo json
         $array= json_decode($json_content,true);
 
+        $validar = new ValidacionMysql(); 
+
         foreach($array as $usuarios)
 	    {
 	       foreach($usuarios as $usuario)
@@ -147,7 +150,10 @@ class DatosMysql extends Datos
 		        $avatar = $usuario['avatar'];
 
 		        $usu2 = self::crearUsuario($nombre_completo,$usu,$email,$password,$avatar);
-		        self::guardarUsuario($usu2);
+		        if (!$validar->mailRepetido($usu2->getEmail())) {
+		        	self::guardarUsuario($usu2);
+		        }
+		        
 		    }
 	    }  
 	}
@@ -203,41 +209,55 @@ class DatosMysql extends Datos
 		$conex = new Conexion();
 		$con = $conex->getConexion2();
 
-	 $crear_db = $con->prepare('CREATE DATABASE IF NOT EXISTS nueva COLLATE utf8_spanish_ci');   
-	 $crear_db->execute();
-	 
-	 //decimos que queremos usar la tabla que acabamos de crear
-	 if($crear_db):
-	 $use_db = $con->prepare('USE nueva');   
-	 $use_db->execute();
-	 endif;
-	 
-	 //si se ha creado la base de datos y estamos en uso de ella creamos las tablas
-	 if($use_db):
-	 //creamos la tabla usuarios
-	 $crear_tb_users = $con->prepare('
-	 CREATE TABLE IF NOT EXISTS usuarios (
-			id int(11) NOT NULL AUTO_INCREMENT,
-			nombre_completo varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-			usuario varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-			email varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-			password varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-			avatar varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-			PRIMARY KEY (id))'); 
-	    
-	 $crear_tb_users->execute();
-	 
-	 //creamos la tabla posts
-	 $insertar_admin = $con->prepare('
-			 INSERT INTO usuarios (nombre_completo, usuario, email, password, avatar) VALUES
-			 ("admin","admin","admin@admin.com",:password,"img/avatar1.png")'); 
+		 $crear_db = $con->prepare('CREATE DATABASE IF NOT EXISTS red_social_viaje COLLATE utf8_spanish_ci');   
+		 $crear_db->execute();
+		 
+		 //decimos que queremos usar la tabla que acabamos de crear
+		 if($crear_db):
+		 $use_db = $con->prepare('USE red_social_viaje');   
+		 $use_db->execute();
+		 endif;
+		 
+		 //si se ha creado la base de datos y estamos en uso de ella creamos las tablas
+		 if($use_db):
+		 //creamos la tabla usuarios
+		 $crear_tb_users = $con->prepare('
+		 CREATE TABLE IF NOT EXISTS usuarios (
+				id int(11) NOT NULL AUTO_INCREMENT,
+				nombre_completo varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+				usuario varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+				email varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+				password varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+				avatar varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+				PRIMARY KEY (id))'); 
+		    
+		 $crear_tb_users->execute();
+		 
+		 //creamos la tabla posts
+		 $insertar_admin = $con->prepare('
+				 INSERT INTO usuarios (nombre_completo, usuario, email, password, avatar) VALUES
+				 ("admin","admin","admin@admin.com",:password,"img/avatar1.png")'); 
 
- 	$hasheado = password_hash($password, PASSWORD_DEFAULT);
- 	$insertar_admin->bindParam(':password',$hasheado);
-	$insertar_admin->execute();
-	 endif;
+	 	$hasheado = password_hash($password, PASSWORD_DEFAULT);
+	 	$insertar_admin->bindParam(':password',$hasheado);
+		$insertar_admin->execute();
+		endif;
 	 
 	 }
+
+
+	public function borrarUsuario($email){
+	   $modelo = new Conexion();
+       // guardo la conexión en una variable
+	   $conexion = $modelo->getConexion();
+
+	   $sql = 'DELETE FROM usuarios WHERE email = :email';
+       $consulta = $conexion->prepare($sql);
+       $consulta->bindParam(':email', $email);
+       $consulta->execute();
+
+	}
+
 }
 
 ?>

@@ -86,7 +86,9 @@ class ValidacionMysql extends Validacion
       $this->errores["password"]= "Por favor ingrese una contraseña";
     }
 
-    parent::validarAdmin($datos['email']);
+    if(parent::validarAdmin($datos['email'])){
+         header('Location:admin.php');
+    }
 
 
     if (!self::comprobarLogin($datos['email'], $datos['password'])) {
